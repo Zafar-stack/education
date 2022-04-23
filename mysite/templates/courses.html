@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="/media/styles/courses_styles.css">
+    <link rel="stylesheet" type="text/css" href="/media/styles/courses_responsive.css">
+{% endblock %}
+{% block container %}
+
+
+	<div class="home">
+		<div class="home_background_container prlx_parent">
+			<div class="home_background prlx" style="background-image:url(/media/images/courses_background.jpg)"></div>
+		</div>
+		<div class="home_content">
+			<h1>Courses</h1>
+		</div>
+	</div>
+
+	<!-- Popular -->
+
+	<div class="popular page_section">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="section_title text-center">
+						<h1>Popular Courses</h1>
+					</div>
+				</div>
+			</div>
+
+			<div class="row course_boxes">
+				
+				<!-- Popular Course Item -->
+                {% for cour in courses %}
+				<div class="col-lg-4 course_box">
+					<div class="card">
+						<img class="card-img-top" src="/media/{{ cour.logo}}" alt="https://unsplash.com/@kellybrito">
+                        <div class="card-body text-center">
+							<div class="card-title"><a href="/courses">{{ cour.title}}</a></div>
+							<div class="card-text">{{ cour.description}}</div>
+						</div>
+						<div class="price_box d-flex flex-row align-items-center">
+							<div class="course_author_image">
+								<img src="/media/{{ cour.author.logo}}" alt="https://unsplash.com/@mehdizadeh">
+							</div>
+							<div class="course_author_name">{{ cour.author.name}} <span>{{ cour.author.title }}</span></div>
+							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>${{ cour.author.price }}</span></div>
+						</div>
+					</div>
+				</div>
+                {% endfor %}
+			</div>
+		</div>		
+	</div>
+
+{% endblock %}
+	<!-- Footer -->
+
